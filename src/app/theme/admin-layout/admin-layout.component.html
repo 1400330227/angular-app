@@ -1,0 +1,39 @@
+<div class="matero-container-wrap" [dir]="options.dir" [ngClass]="{
+  'matero-sidenav-collapsed': options.sidenavCollapsed && options.navPos!=='top',
+  'matero-navbar-top': options.navPos==='top',
+  'matero-header-above': options.headerPos==='above',
+  'matero-header-fixed': options.headerPos==='fixed',
+  'matero-header-white': options.theme==='light'}">
+  <!--头部-->
+  <app-header class="matero-header"></app-header>
+
+  <!--侧边栏容器-->
+  <mat-sidenav-container class="matero-container" autosize autoFocus>
+    <!--左侧边栏-->
+    <mat-sidenav #sidenav [mode]="isOver ? 'over' : 'side'"
+                 opened class="matero-sidenav"
+                 [opened]="options.navPos==='side' && options.sidenavOpened && !isOver"
+                 (openedChange)="sidenavOpenedChange($event)">
+      <app-sidebar (toggleCollapsed)="toggleCollapsed()"
+                   [toggleChecked]="options.sidenavCollapsed"
+                   [showToggle]="!isOver"
+                   [showUser]="options.showUserPanel"
+                   [showHeader]="options.headerPos!=='above'"></app-sidebar>
+    </mat-sidenav>
+
+    <!--右侧边通知栏-->
+    <mat-sidenav>
+      <app-sidebar-notice></app-sidebar-notice>
+    </mat-sidenav>
+
+    <mat-sidenav-content class="matero-content-wrap">
+      <!--头部-->
+      <app-header class="matero-header"></app-header>
+      <app-topmenu class="matero-topmenu"></app-topmenu>
+      <!--主内容区域-->
+      <div class="matero-content">
+        <router-outlet></router-outlet>
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

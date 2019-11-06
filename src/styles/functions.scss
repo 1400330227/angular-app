@@ -1,0 +1,10 @@
+@function swift-ease-out($property) {
+  $transition: $property $swift-ease-out-duration $swift-ease-out-timing-function;
+
+  @return $transition
+}
+
+@function fast-out-slow($property) {
+  $transition: $property 225ms $mat-fast-out-slow-in-timing-function;
+  @return $transition
+}

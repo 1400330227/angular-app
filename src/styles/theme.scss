@@ -1,0 +1,10 @@
+// 配置页面
+@import "mixins";
+@import "variables";
+@import "core/index";
+
+
+@mixin matero-admin-theme($theme) {
+  @include matero-sidenav-theme($theme);
+  @include matero-topnav-theme($theme)
+}
